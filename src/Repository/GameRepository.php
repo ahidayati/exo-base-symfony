@@ -59,6 +59,34 @@ class GameRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findMostPlayGames(int $nb=10): array
+    {
+        $q = $this->createQueryBuilder('game');
+
+        $q -> select(['game'])
+            -> addSelect('SUM(library.gameTime) AS HIDDEN total_played')
+            -> join('library', 'library')
+            -> groupBy('library.gameId');
+
+        $q -> orderBy('total_played', 'DESC');
+
+        return $q
+            ->getQuery()
+            ->getResult()
+            ;
+
+//        return $this->createQueryBuilder('library')
+//            ->select('library', 'game')
+//            ->addSelect('SUM(library.gameTime) as gamePlayed')
+//            ->leftJoin('library.game', 'game')
+//            ->orderBy('gamePlayed', 'DESC')
+//            ->groupBy('library')
+//            ->setMaxResults($nb)
+//            ->getQuery()
+//            ->getResult()
+//            ;
+    }
+
     // /**
     //  * @return Game[] Returns an array of Game objects
     //  */

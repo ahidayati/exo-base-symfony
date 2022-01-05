@@ -11,9 +11,12 @@
             <div class="row d-flex justify-content-evenly">
                 {% for game in displayGamesByName %}
                     <div class="card mt-3" style="width: 15rem;">
-                        <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">
+                        <div class="position-relative">
+                            <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">
+                            <div class="position-absolute bottom-0 end-0 bg-warning p-2">{{ game.price }}€</div>
+                        </div>
                         <div class="card-body">
-                            <p class="card-text">{{ game.name }} {{ game.price }}€</p>
+                            <p class="card-text">{{ game.name }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -25,9 +28,13 @@
             <div class="row d-flex justify-content-evenly">
                 {% for game in displayGamesByReleaseDate %}
                     <div class="card mt-3" style="width: 15rem;">
-                        <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">
+                        <div class="position-relative">
+                            <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">
+                            <div class="position-absolute bottom-0 end-0 bg-warning p-2">{{ game.price }}€</div>
+                        </div>
                         <div class="card-body">
-                            <p class="card-text">{{ game.name }} {{ game.price }}€</p>
+                            <p class="card-text">{{ game.name }}</p>
+                            <p class="card-text bg-warning p-1">Released: {{ game.publishedAt|date ('d-m-Y') }}</p>
                         </div>
                     </div>
                 {% endfor %}
