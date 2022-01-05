@@ -1,0 +1,9 @@
+
+account:
+  index:
+    table:
+      name: 'Nom'
+      nickname: 'Pseudo'
+      email: 'Courriel'
+      nb_games: 'Jeux Total'
+      wallet: 'Portefeuille'

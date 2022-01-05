@@ -1,0 +1,9 @@
+
+account:
+  index:
+    table:
+      name: 'Name'
+      nickname: 'Nickname'
+      email: 'Email'
+      nb_games: 'Total Games'
+      wallet: 'Wallet'

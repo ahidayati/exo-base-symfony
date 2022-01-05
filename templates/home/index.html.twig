@@ -1,21 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}STEAMISH{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="container">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/HB/Documents/12-symfony/exo-base-symfony/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/HB/Documents/12-symfony/exo-base-symfony/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-    <a class="btn btn-primary">Test Button</a>
-</div>
+        <div class="bg-dark mt-4 p-3">
+            <h3 class="text-white">Featured Games</h3>
+            <div class="row d-flex justify-content-evenly">
+                {% for game in displayGamesByName %}
+                    <div class="card mt-3" style="width: 15rem;">
+                        <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">
+                        <div class="card-body">
+                            <p class="card-text">{{ game.name }} {{ game.price }}€</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="bg-dark mt-5 p-3">
+            <h3 class="text-white">New Releases</h3>
+            <div class="row d-flex justify-content-evenly">
+                {% for game in displayGamesByReleaseDate %}
+                    <div class="card mt-3" style="width: 15rem;">
+                        <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">
+                        <div class="card-body">
+                            <p class="card-text">{{ game.name }} {{ game.price }}€</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="bg-dark mt-5 p-3">
+            <h3 class="text-white">Latest Comments</h3>
+            <div class="row d-flex justify-content-evenly">
+                {% for comment in displayLatestComments %}
+                    <div class="card mt-3" style="width: 15rem;">
+                        <div class="card-body">
+                            <p class="card-text text-center">{{ comment.content }}</p>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                {{ comment.account.nickname }}
+
+                            </h6>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ comment.createdAt|date ('d-m-Y H:i') }}</h6>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="bg-dark mt-5 p-3">
+            <h3 class="text-white">Most Played Games</h3>
+{#            <div class="row d-flex justify-content-evenly">#}
+{#                {% for game in displayGamesByReleaseDate %}#}
+{#                    <div class="card mt-3" style="width: 15rem;">#}
+{#                        <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">#}
+{#                        <div class="card-body">#}
+{#                            <p class="card-text">{{ game.name }} {{ game.price }}€</p>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endfor %}#}
+{#            </div>#}
+        </div>
+
+    </div>
+
+
 {% endblock %}

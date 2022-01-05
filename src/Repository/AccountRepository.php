@@ -19,6 +19,17 @@ class AccountRepository extends ServiceEntityRepository
         parent::__construct($registry, Account::class);
     }
 
+    public function findAllAccountsWithRelations(): array
+    {
+        return $this->createQueryBuilder('account')
+            ->select('account', 'libraries')
+            ->join('account.libraries', 'libraries')
+            ->orderBy('account.name', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Account[] Returns an array of Account objects
     //  */

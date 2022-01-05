@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}STEAMISH-Accounts{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{{ 'account.index.table.name'|trans }}</th>
+                    <th>{{ 'account.index.table.email'|trans }}</th>
+                    <th>{{ 'account.index.table.nickname'|trans }}</th>
+                    <th>{{ 'account.index.table.nb_games'|trans }}</th>
+{#                    <th>{{ 'account.index.table.wallet'|trans }}</th>#}
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if allAccount|length > 0 %}
+                    {% for account in allAccount %}
+                    <tr>
+                        <td>{{ account.name }}</td>
+                        <td>{{ account.email }}</td>
+                        <td>{{ account.nickname }}</td>
+                        <td>{{ account.libraries|length }}</td>
+{#                        <td>{{ account.wallet }}€</td>#}
+                        <th><a href="{{ path('display_index', {'id': account.id}) }}"><i class="far fa-eye"></i></a></th>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5">No account is available to show.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
