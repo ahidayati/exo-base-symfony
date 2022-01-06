@@ -1,0 +1,13 @@
+{% for game in games %}
+    <a href="{{ path('game_show', {'id': game.id}) }}" class="col-card">
+        <div class="card mt-3" style="width: 15rem;">
+            <div class="position-relative">
+                <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">
+                <div class="position-absolute bottom-0 end-0 bg-warning p-2 text-dark">{{ game.price }}€</div>
+            </div>
+            <div class="card-body">
+                <p class="card-text text-center text-dark">{{ game.name }}</p>
+            </div>
+        </div>
+    </a>
+{% endfor %}

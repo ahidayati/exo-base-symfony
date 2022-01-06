@@ -15,13 +15,12 @@ class HomeController extends AbstractController
     #[Route('/', name: 'homepage')]
     public function index(GameRepository $gameRepository, CommentRepository $commentRepository, AccountRepository $accountRepository): Response
     {
-//        dump($gameRepository->findMostPlayGames());
 //        dump($commentRepository->findAllCommentsByDate(5));
         return $this->render('home/index.html.twig', [
             'displayGamesByName' => $gameRepository->findGamesByName(10),
             'displayGamesByReleaseDate' => $gameRepository->findGamesByReleaseDate(4),
             'displayLatestComments' => $commentRepository->findAllCommentsByDate(5),
-//            'displayMostPlayGames' => $gameRepository->findMostPlayGames(),
+            'displayMostPlayedGames' => $gameRepository->findMostPlayedGames(10),
 
         ]);
 

@@ -22,8 +22,9 @@ class CommentRepository extends ServiceEntityRepository
     public function findAllCommentsByDate(int $nb): array
     {
         return $this->createQueryBuilder('comment')
-            ->select('comment', 'account')
+            ->select('comment', 'account', 'game')
             ->leftJoin('comment.account', 'account')
+            ->join('comment.game', 'game')
             ->setMaxResults($nb)
             ->orderBy('comment.createdAt', 'DESC')
             ->getQuery()

@@ -1492,6 +1492,11 @@ atob@^2.1.2:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
+autocompleter@^6.1.0:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/autocompleter/-/autocompleter-6.1.2.tgz#35a2c8b496c1ebdd798183e26c529e4b7450fd34"
+  integrity sha512-DfEcgxBJOTJJwxkIRZLv/ggD3g5w/fqzZkdJsOcgk7hjxw36lH/nAfIEXzV7qDE55swnYEe43E/WhZPXmSFfsA==
+
 babel-loader@^8.2.2:
   version "8.2.3"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.2.3.tgz#8986b40f1a64cacfcb4b8429320085ef68b1342d"

@@ -9,35 +9,18 @@
         <div class="bg-dark mt-4 p-3">
             <h3 class="text-white">Featured Games</h3>
             <div class="row d-flex justify-content-evenly">
-                {% for game in displayGamesByName %}
-                    <div class="card mt-3" style="width: 15rem;">
-                        <div class="position-relative">
-                            <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">
-                            <div class="position-absolute bottom-0 end-0 bg-warning p-2">{{ game.price }}€</div>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{ game.name }}</p>
-                        </div>
-                    </div>
-                {% endfor %}
+                {% include 'common/partial/game_loop.html.twig' with {
+                    'games' : displayGamesByName
+                } %}
             </div>
         </div>
 
         <div class="bg-dark mt-5 p-3">
             <h3 class="text-white">New Releases</h3>
             <div class="row d-flex justify-content-evenly">
-                {% for game in displayGamesByReleaseDate %}
-                    <div class="card mt-3" style="width: 15rem;">
-                        <div class="position-relative">
-                            <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">
-                            <div class="position-absolute bottom-0 end-0 bg-warning p-2">{{ game.price }}€</div>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{ game.name }}</p>
-                            <p class="card-text bg-warning p-1">Released: {{ game.publishedAt|date ('d-m-Y') }}</p>
-                        </div>
-                    </div>
-                {% endfor %}
+                {% include 'common/partial/game_loop.html.twig' with {
+                    'games' : displayGamesByReleaseDate
+                } %}
             </div>
         </div>
 
@@ -47,11 +30,9 @@
                 {% for comment in displayLatestComments %}
                     <div class="card mt-3" style="width: 15rem;">
                         <div class="card-body">
-                            <p class="card-text text-center">{{ comment.content }}</p>
-                            <h6 class="card-subtitle mb-2 text-muted">
-                                {{ comment.account.nickname }}
-
-                            </h6>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ comment.game.name }}</h6>
+                            <p class="card-text">{{ comment.content|slice(0, 60) }}...</p>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ comment.account.nickname }}</h6>
                             <h6 class="card-subtitle mb-2 text-muted">{{ comment.createdAt|date ('d-m-Y H:i') }}</h6>
                         </div>
                     </div>
@@ -61,16 +42,11 @@
 
         <div class="bg-dark mt-5 p-3">
             <h3 class="text-white">Most Played Games</h3>
-{#            <div class="row d-flex justify-content-evenly">#}
-{#                {% for game in displayGamesByReleaseDate %}#}
-{#                    <div class="card mt-3" style="width: 15rem;">#}
-{#                        <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">#}
-{#                        <div class="card-body">#}
-{#                            <p class="card-text">{{ game.name }} {{ game.price }}€</p>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                {% endfor %}#}
-{#            </div>#}
+            <div class="row d-flex justify-content-evenly">
+                {% include 'common/partial/game_loop.html.twig' with {
+                    'games' : displayMostPlayedGames
+                } %}
+            </div>
         </div>
 
     </div>
