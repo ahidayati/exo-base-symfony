@@ -5,5 +5,19 @@
 {% endblock %}
 
 {% block body %}
-game show
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-4 text-center">
+                <img src="{{ game.thumbnailCover }}" alt="game-img" class="show-game-img">
+                {% if game.thumbnailLogo is not null %}
+                    <img src="{{ game.thumbnailLogo }}" alt="game-img" class="show-game-img">
+                {% endif %}
+            </div>
+            <div class="col-8 text-white">
+                <h2>{{ game.name }}</h2>
+                <h3>{{ game.price }}€</h3>
+                <p>{{ game.description }}</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

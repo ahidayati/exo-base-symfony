@@ -1,5 +1,5 @@
 {% for game in games %}
-    <a href="{{ path('game_show', {'id': game.id}) }}" class="col-card">
+    <a href="{{ path('game_show', {'slug': game.slug}) }}" class="col-card">
         <div class="card mt-3" style="width: 15rem;">
             <div class="position-relative">
                 <img src="{{ game.thumbnailCover }}" class="card-img-top" alt="logo">

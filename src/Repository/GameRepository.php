@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Game;
+use App\Entity\Genre;
 use App\Entity\Library;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query\Expr\Join;
@@ -75,6 +76,21 @@ class GameRepository extends ServiceEntityRepository
             -> setMaxResults($nb)
             -> groupBy('game.name')
             -> orderBy('SUM(library.gameTime)', 'DESC');
+
+        return $q
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findGameWithRelation(string $slug): array
+    {
+        $q = $this->createQueryBuilder('game');
+        $q -> select('game', 'genres', 'languages')
+            -> innerJoin('game.genres', 'genres')
+            -> innerJoin ('game.languages', 'languages')
+//            -> andWhere($slug)
+            ;
 
         return $q
             ->getQuery()

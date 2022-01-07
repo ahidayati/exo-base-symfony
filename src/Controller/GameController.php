@@ -26,9 +26,11 @@ class GameController extends AbstractController
         ]);
     }
 
-    #[Route('/detail/{id}', name: 'game_show')]
-    public function show(Game $game): Response
+    #[Route('/detail/{slug}', name: 'game_show')]
+    public function show(Game $game, GameRepository $gameRepository, string $slug): Response
     {
+//        dump($game);
+        dump($gameRepository->findGameWithRelation($slug));
         return $this->render('game/show.html.twig', [
             'game' => $game,
         ]);

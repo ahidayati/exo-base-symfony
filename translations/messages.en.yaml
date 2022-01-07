@@ -7,3 +7,9 @@ account:
       email: 'Email'
       nb_games: 'Total Games'
       wallet: 'Wallet'
+home:
+  game:
+    title:
+      feature: 'Featured Games'
+      release: 'New Releases'
+      mostPlayed: 'Most Played Games'

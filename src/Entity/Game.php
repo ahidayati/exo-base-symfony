@@ -42,6 +42,9 @@ class Game
     #[ORM\OneToMany(mappedBy: 'game', targetEntity: Comment::class)]
     private $comments;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $slug;
+
     public function __construct()
     {
         $this->languages = new ArrayCollection();
@@ -200,6 +203,18 @@ class Game
                 $comment->setGame(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

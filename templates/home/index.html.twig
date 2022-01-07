@@ -7,7 +7,7 @@
     <div class="container">
 
         <div class="bg-dark mt-4 p-3">
-            <h3 class="text-white">Featured Games</h3>
+            <h3 class="text-white"> {{ 'home.game.title.feature'|trans }} </h3>
             <div class="row d-flex justify-content-evenly">
                 {% include 'common/partial/game_loop.html.twig' with {
                     'games' : displayGamesByName
@@ -16,7 +16,7 @@
         </div>
 
         <div class="bg-dark mt-5 p-3">
-            <h3 class="text-white">New Releases</h3>
+            <h3 class="text-white">{{ 'home.game.title.release'|trans }}</h3>
             <div class="row d-flex justify-content-evenly">
                 {% include 'common/partial/game_loop.html.twig' with {
                     'games' : displayGamesByReleaseDate
@@ -41,7 +41,7 @@
         </div>
 
         <div class="bg-dark mt-5 p-3">
-            <h3 class="text-white">Most Played Games</h3>
+            <h3 class="text-white">{{ 'home.game.title.mostPlayed'|trans }}</h3>
             <div class="row d-flex justify-content-evenly">
                 {% include 'common/partial/game_loop.html.twig' with {
                     'games' : displayMostPlayedGames
